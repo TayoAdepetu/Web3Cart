@@ -1,6 +1,12 @@
 <template>
   <div style="display: block; margin-top: 30px">
-    <div v-for="product in products" :key="product.id" @click="openCart()">
+    <button
+      style="background-color: blue; color: white; padding: 7px"
+      @click="openCart()"
+    >
+      View Cart
+    </button>
+    <div v-for="product in products" :key="product.id">
       <div
         style="
           width: 350px;
@@ -42,7 +48,6 @@
       transition="dialog-top-transition"
     >
       <div style="background-color: white; padding: 10px">
-        <!-- Add this code inside the Shopping Cart section -->
         <div>
           <input v-model="couponCode" placeholder="Enter Coupon Code" />
           <button @click="applyCoupon">Apply Coupon</button>
@@ -50,11 +55,35 @@
 
         <h2>Shopping Cart</h2>
         <div v-for="item in cart" :key="item.product.id">
-          <span>{{ item.product.name }}</span>
-          <span>{{ item.quantity }}</span>
-          <button @click="increaseQuantity(item)">+</button>
-          <button @click="decreaseQuantity(item)">-</button>
-          <button @click="removeFromCart(item)">Remove</button>
+          <div
+            style="
+              display: flex;
+              width: 300px;
+              justify-content: space-between;
+              margin-bottom: 10px;
+            "
+          >
+            <span>{{ item.product.name }}</span>
+            <span>{{ item.quantity }}</span>
+            <button
+              style="background-color: blue; padding: 4px; color: white"
+              @click="increaseQuantity(item)"
+            >
+              +
+            </button>
+            <button
+              style="background-color: red; padding: 4px; color: white"
+              @click="decreaseQuantity(item)"
+            >
+              -
+            </button>
+            <button
+              style="background-color: red; padding: 4px"
+              @click="removeFromCart(item)"
+            >
+              Remove
+            </button>
+          </div>
         </div>
         <p>Total Amount: {{ getTotalAmount() }}</p>
       </div>
