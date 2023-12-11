@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="display: block">
     <div
       v-for="product in products"
       :key="product.id"
@@ -32,89 +32,89 @@
 </template>
 
 <script>
-  export default {
-    data() {
-      return {
-        openProductForm: false,
-        products: [
-          { id: 1, name: "Web3Cart Malta", amount: 6000, img: "malt.jpg" },
-          {
-            id: 1,
-            name: "Web3Cart Power Bank",
-            amount: 6000,
-            img: "power-bank.jpg",
-          },
-          { id: 1, name: "Web3Cart Miliki", amount: 6000, img: "milk.jpg" },
-          { id: 1, name: "Web3Cart PS5", amount: 6000, img: "PS5.jpg" },
-          { id: 1, name: "Web3Cart Fridge", amount: 6000, img: "fRIDGE.jpg" },
-          { id: 1, name: "Web3Cart Whisky", amount: 6000, img: "WINE.jpg" },
-          {
-            id: 1,
-            name: "Web3Cart Sneakers",
-            amount: 6000,
-            img: "Sneakers.jpg",
-          },
-          {
-            id: 1,
-            name: "Web3Cart Washing Machine",
-            amount: 6000,
-            img: "washing-machine.jpg",
-          },
-          { id: 1, name: "Web3Cart Phone", amount: 6000, img: "phone.jpg" },
-          {
-            id: 1,
-            name: "Web3Cart Solar Generator",
-            amount: 6000,
-            img: "solar-generator.jpg",
-          },
-        ],
-        cart: [],
-      };
+export default {
+  data() {
+    return {
+      openProductForm: false,
+      products: [
+        { id: 1, name: "Web3Cart Malta", amount: 6000, img: "malt.jpg" },
+        {
+          id: 1,
+          name: "Web3Cart Power Bank",
+          amount: 6000,
+          img: "power-bank.jpg",
+        },
+        { id: 1, name: "Web3Cart Miliki", amount: 6000, img: "milk.jpg" },
+        { id: 1, name: "Web3Cart PS5", amount: 6000, img: "PS5.jpg" },
+        { id: 1, name: "Web3Cart Fridge", amount: 6000, img: "fRIDGE.jpg" },
+        { id: 1, name: "Web3Cart Whisky", amount: 6000, img: "WINE.jpg" },
+        {
+          id: 1,
+          name: "Web3Cart Sneakers",
+          amount: 6000,
+          img: "Sneakers.jpg",
+        },
+        {
+          id: 1,
+          name: "Web3Cart Washing Machine",
+          amount: 6000,
+          img: "washing-machine.jpg",
+        },
+        { id: 1, name: "Web3Cart Phone", amount: 6000, img: "phone.jpg" },
+        {
+          id: 1,
+          name: "Web3Cart Solar Generator",
+          amount: 6000,
+          img: "solar-generator.jpg",
+        },
+      ],
+      cart: [],
+    };
+  },
+  methods: {
+    addToCart(product) {
+      const existingItem = this.cart.find(
+        (item) => item.product.id === product.id
+      );
+
+      if (existingItem) {
+        existingItem.quantity += 1;
+      } else {
+        this.cart.push({ product, quantity: 1 });
+      }
+
+      this.saveCart();
     },
-    methods: {
-      addToCart(product) {
-        const existingItem = this.cart.find(
-          (item) => item.product.id === product.id
-        );
-
-        if (existingItem) {
-          existingItem.quantity += 1;
-        } else {
-          this.cart.push({ product, quantity: 1 });
-        }
-
-        this.saveCart();
-      },
-      increaseQuantity(item) {
-        item.quantity += 1;
-        this.saveCart();
-      },
-      decreaseQuantity(item) {
-        if (item.quantity > 1) {
-          item.quantity -= 1;
-        } else {
-          this.cart = this.cart.filter((i) => i !== item);
-        }
-
-        this.saveCart();
-      },
-      removeFromCart(item) {
+    increaseQuantity(item) {
+      item.quantity += 1;
+      this.saveCart();
+    },
+    decreaseQuantity(item) {
+      if (item.quantity > 1) {
+        item.quantity -= 1;
+      } else {
         this.cart = this.cart.filter((i) => i !== item);
-        this.saveCart();
-      },
-      getTotalAmount() {
-        return this.cart.reduce(
-          (total, item) => total + item.product.amount * item.quantity,
-          0
-        );
-      },
-      saveCart() {
-        localStorage.setItem("cart", JSON.stringify(this.cart));
-      },
+      }
+
+      this.saveCart();
     },
-    mounted() {
-      const storedCart = localStorage.getItem("cart");
-      this.cart = storedCart ? JSON.parse(storedCart) : [];
+    removeFromCart(item) {
+      this.cart = this.cart.filter((i) => i !== item);
+      this.saveCart();
     },
-  };
+    getTotalAmount() {
+      return this.cart.reduce(
+        (total, item) => total + item.product.amount * item.quantity,
+        0
+      );
+    },
+    saveCart() {
+      localStorage.setItem("cart", JSON.stringify(this.cart));
+    },
+  },
+  mounted() {
+    const storedCart = localStorage.getItem("cart");
+    this.cart = storedCart ? JSON.parse(storedCart) : [];
+  },
+};
 </script>
