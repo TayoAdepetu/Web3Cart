@@ -7,12 +7,13 @@
     >
       <div
         style="
-          width: 250px;
+          width: 350px;
           height: 400px;
           margin-right: auto;
           margin-left: auto;
           border: 1px solid blue;
           margin-bottom: 20px;
+          padding: 5px;
         "
       >
         <img
@@ -21,11 +22,17 @@
         />
 
         <span style="text-align: center">{{ product.name }}</span>
-        <div style="display: flex; justify-content: space-between">
-          <span>{{ product.amount }}</span>
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+          "
+        >
+          <span>&#8358; {{ product.amount }}</span>
           <button
             @click="addToCart(product)"
-            style="color: white; background-color: blue"
+            style="color: white; background-color: blue; padding: 4px"
           >
             Add to Cart
           </button>
