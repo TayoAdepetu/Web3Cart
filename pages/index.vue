@@ -1,5 +1,5 @@
 <template>
-  <div style="display: block">
+  <div style="display: block; margin-top: 30px">
     <div
       v-for="product in products"
       :key="product.id"
