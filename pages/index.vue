@@ -67,7 +67,7 @@ export default {
         },
         { id: 1, name: "Web3Cart Miliki", amount: 6000, img: "milk.jpg" },
         { id: 1, name: "Web3Cart PS5", amount: 6000, img: "PS5.jpg" },
-        { id: 1, name: "Web3Cart Fridge", amount: 6000, img: "fRIDGE.jpg" },
+        { id: 1, name: "Web3Cart Fridge", amount: 6000, img: "Fridge.jpg" },
         { id: 1, name: "Web3Cart Whisky", amount: 6000, img: "WINE.jpg" },
         {
           id: 1,
