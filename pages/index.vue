@@ -49,8 +49,17 @@
     >
       <div style="background-color: white; padding: 10px">
         <div>
-          <input v-model="couponCode" placeholder="Enter Coupon Code" />
-          <button @click="applyCoupon">Apply Coupon</button>
+          <input
+            style="border: 1px solid; padding: 3px"
+            v-model="couponCode"
+            placeholder="Enter Coupon Code"
+          />
+          <button
+            style="background-color: blue; color: white; padding: 3px"
+            @click="applyCoupon"
+          >
+            Apply Coupon
+          </button>
         </div>
 
         <h2>Shopping Cart</h2>
