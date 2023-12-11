@@ -1,10 +1,6 @@
 <template>
   <div style="display: block; margin-top: 30px">
-    <div
-      v-for="product in products"
-      :key="product.id"
-      @click="openProductForm == true"
-    >
+    <div v-for="product in products" :key="product.id" @click="openCart()">
       <div
         style="
           width: 350px;
@@ -45,7 +41,7 @@
       persistent
       transition="dialog-top-transition"
     >
-      <div>
+      <div style="background-color: white;padding: 10px;">
         <!-- Add this code inside the Shopping Cart section -->
         <div>
           <input v-model="couponCode" placeholder="Enter Coupon Code" />
@@ -109,6 +105,9 @@ export default {
     };
   },
   methods: {
+    openCart() {
+      this.openProductForm = true;
+    },
     addToCart(product) {
       const existingItem = this.cart.find(
         (item) => item.product.id === product.id
