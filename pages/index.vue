@@ -13,7 +13,10 @@
           margin-left: auto;
         "
       >
-        <img style="" :src="require(`~/assets/images/${product.img}`)" />
+        <img
+          style="height: 300px"
+          :src="require(`~/assets/images/${product.img}`)"
+        />
 
         <span>{{ product.name }}</span>
         <div style="display: flex; justify-content: space-between">
