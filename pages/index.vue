@@ -13,7 +13,8 @@
           margin-left: auto;
         "
       >
-        <img :src="~/assets/images/`${product.img}`" />
+        <img :src="require(`~/assets/images/${product.img}`)" />
+
         <span>{{ product.name }}</span
         >\
         <div style="display: flex; justify-content: space-between">
@@ -29,6 +30,12 @@
       transition="dialog-top-transition"
     >
       <div>
+        <!-- Add this code inside the Shopping Cart section -->
+        <div>
+          <input v-model="couponCode" placeholder="Enter Coupon Code" />
+          <button @click="applyCoupon">Apply Coupon</button>
+        </div>
+
         <h2>Shopping Cart</h2>
         <div v-for="item in cart" :key="item.product.id">
           <span>{{ item.product.name }}</span>
@@ -47,6 +54,8 @@
 export default {
   data() {
     return {
+      couponCode: "",
+
       openProductForm: false,
       products: [
         { id: 1, name: "Web3Cart Malta", amount: 6000, img: "malt.jpg" },
@@ -122,6 +131,17 @@ export default {
     },
     saveCart() {
       localStorage.setItem("cart", JSON.stringify(this.cart));
+    },
+
+    applyCoupon() {
+      if (this.couponCode === "WEB3BRIDGECOHORTx") {
+        // Apply a 10% discount
+        this.cart.forEach((item) => {
+          item.product.amount *= 0.9; // 10% discount
+        });
+      }
+
+      this.saveCart();
     },
   },
   mounted() {
