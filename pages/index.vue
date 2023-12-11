@@ -12,6 +12,7 @@
           margin-right: auto;
           margin-left: auto;
           border: 1px solid blue;
+          margin-bottom: 20px;
         "
       >
         <img
