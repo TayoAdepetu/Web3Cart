@@ -8,15 +8,14 @@
       <div
         style="
           width: 250px;
-          height: auto;
+          height: 400px;
           margin-right: auto;
           margin-left: auto;
         "
       >
-        <img :src="require(`~/assets/images/${product.img}`)" />
+        <img style="" :src="require(`~/assets/images/${product.img}`)" />
 
-        <span>{{ product.name }}</span
-        >\
+        <span>{{ product.name }}</span>
         <div style="display: flex; justify-content: space-between">
           <span>{{ product.amount }}</span>
           <button @click="addToCart(product)">Add to Cart</button>
