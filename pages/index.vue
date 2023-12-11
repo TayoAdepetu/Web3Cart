@@ -5,10 +5,22 @@
       :key="product.id"
       @click="openProductForm == true"
     >
-      <img :src="`@/assets/images/${product.img}`" />
-      <span>{{ product.name }}</span>
-      <span>{{ product.amount }}</span>
-      <button @click="addToCart(product)">Add to Cart</button>
+      <div
+        style="
+          width: 250px;
+          height: auto;
+          margin-right: auto;
+          margin-left: auto;
+        "
+      >
+        <img :src="`@/assets/images/${product.img}`" />
+        <span>{{ product.name }}</span
+        >\
+        <div style="display: flex; justify-content: space-between">
+          <span>{{ product.amount }}</span>
+          <button @click="addToCart(product)">Add to Cart</button>
+        </div>
+      </div>
     </div>
 
     <v-dialog
