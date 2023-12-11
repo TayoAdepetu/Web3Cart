@@ -41,7 +41,7 @@
       persistent
       transition="dialog-top-transition"
     >
-      <div style="background-color: white;padding: 10px;">
+      <div style="background-color: white; padding: 10px">
         <!-- Add this code inside the Shopping Cart section -->
         <div>
           <input v-model="couponCode" placeholder="Enter Coupon Code" />
@@ -57,6 +57,23 @@
           <button @click="removeFromCart(item)">Remove</button>
         </div>
         <p>Total Amount: {{ getTotalAmount() }}</p>
+      </div>
+
+      <div style="background-color: white; width: 100%">
+        <button
+          style="
+            background-color: red;
+            color: white;
+            padding: 6px;
+            max-width: 200px;
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+          "
+          @click="closeCart()"
+        >
+          Close Cart
+        </button>
       </div>
     </v-dialog>
   </div>
@@ -108,6 +125,11 @@ export default {
     openCart() {
       this.openProductForm = true;
     },
+
+    closeCart() {
+      this.openProductForm = false;
+    },
+
     addToCart(product) {
       const existingItem = this.cart.find(
         (item) => item.product.id === product.id
