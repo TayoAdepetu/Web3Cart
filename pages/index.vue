@@ -11,6 +11,7 @@
           height: 400px;
           margin-right: auto;
           margin-left: auto;
+          border: 1px solid blue;
         "
       >
         <img
@@ -18,10 +19,15 @@
           :src="require(`~/assets/images/${product.img}`)"
         />
 
-        <span>{{ product.name }}</span>
+        <span style="text-align: center">{{ product.name }}</span>
         <div style="display: flex; justify-content: space-between">
           <span>{{ product.amount }}</span>
-          <button @click="addToCart(product)">Add to Cart</button>
+          <button
+            @click="addToCart(product)"
+            style="color: white; background-color: blue"
+          >
+            Add to Cart
+          </button>
         </div>
       </div>
     </div>
