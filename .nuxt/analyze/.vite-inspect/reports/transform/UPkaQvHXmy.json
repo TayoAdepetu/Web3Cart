@@ -1,0 +1,223 @@
+{
+  "resolvedId": "C:/Users/User/Documents/Web3Cart/pages/index.vue?macro=true",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "<template>\r\n  <div>\r\n    <div v-for=\"product in products\" :key=\"product.id\">\r\n      <img :src=\"`@/assets/images/${product.img}`\" />\r\n      <span>{{ product.name }}</span>\r\n      <span>{{ product.amount }}</span>\r\n      <button @click=\"addToCart(product)\">Add to Cart</button>\r\n    </div>\r\n\r\n    <div>\r\n      <h2>Shopping Cart</h2>\r\n      <div v-for=\"item in cart\" :key=\"item.product.id\">\r\n        <span>{{ item.product.name }}</span>\r\n        <span>{{ item.quantity }}</span>\r\n        <button @click=\"increaseQuantity(item)\">+</button>\r\n        <button @click=\"decreaseQuantity(item)\">-</button>\r\n        <button @click=\"removeFromCart(item)\">Remove</button>\r\n      </div>\r\n      <p>Total Amount: {{ getTotalAmount() }}</p>\r\n    </div>\r\n  </div>\r\n</template>\r\n\r\n<script>\r\n  export default {\r\n    data() {\r\n      return {\r\n        products: [\r\n          { id: 1, name: \"Web3Cart Malta\", amount: 6000, img: \"malt.jpg\" },\r\n          {\r\n            id: 1,\r\n            name: \"Web3Cart Power Bank\",\r\n            amount: 6000,\r\n            img: \"power-bank.jpg\",\r\n          },\r\n          { id: 1, name: \"Web3Cart Miliki\", amount: 6000, img: \"milk.jpg\" },\r\n          { id: 1, name: \"Web3Cart PS5\", amount: 6000, img: \"PS5.jpg\" },\r\n          { id: 1, name: \"Web3Cart Fridge\", amount: 6000, img: \"fRIDGE.jpg\" },\r\n          { id: 1, name: \"Web3Cart Whisky\", amount: 6000, img: \"WINE.jpg\" },\r\n          {\r\n            id: 1,\r\n            name: \"Web3Cart Sneakers\",\r\n            amount: 6000,\r\n            img: \"Sneakers.jpg\",\r\n          },\r\n          {\r\n            id: 1,\r\n            name: \"Web3Cart Washing Machine\",\r\n            amount: 6000,\r\n            img: \"washing-machine.jpg\",\r\n          },\r\n          { id: 1, name: \"Web3Cart Phone\", amount: 6000, img: \"phone.jpg\" },\r\n          {\r\n            id: 1,\r\n            name: \"Web3Cart Solar Generator\",\r\n            amount: 6000,\r\n            img: \"solar-generator.jpg\",\r\n          },\r\n        ],\r\n        cart: [],\r\n      };\r\n    },\r\n    methods: {\r\n      addToCart(product) {\r\n        const existingItem = this.cart.find(\r\n          (item) => item.product.id === product.id\r\n        );\r\n\r\n        if (existingItem) {\r\n          existingItem.quantity += 1;\r\n        } else {\r\n          this.cart.push({ product, quantity: 1 });\r\n        }\r\n\r\n        this.saveCart();\r\n      },\r\n      increaseQuantity(item) {\r\n        item.quantity += 1;\r\n        this.saveCart();\r\n      },\r\n      decreaseQuantity(item) {\r\n        if (item.quantity > 1) {\r\n          item.quantity -= 1;\r\n        } else {\r\n          this.cart = this.cart.filter((i) => i !== item);\r\n        }\r\n\r\n        this.saveCart();\r\n      },\r\n      removeFromCart(item) {\r\n        this.cart = this.cart.filter((i) => i !== item);\r\n        this.saveCart();\r\n      },\r\n      getTotalAmount() {\r\n        return this.cart.reduce(\r\n          (total, item) => total + item.product.amount * item.quantity,\r\n          0\r\n        );\r\n      },\r\n      saveCart() {\r\n        // Persist cart data (e.g., using localStorage)\r\n        localStorage.setItem(\"cart\", JSON.stringify(this.cart));\r\n      },\r\n    },\r\n    mounted() {\r\n      // Load cart data from storage on page load\r\n      const storedCart = localStorage.getItem(\"cart\");\r\n      this.cart = storedCart ? JSON.parse(storedCart) : [];\r\n    },\r\n  };\r\n</script>\r\n",
+      "start": 1702291382137,
+      "end": 1702291382635,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1702291382635,
+      "end": 1702291382635,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1702291382635,
+      "end": 1702291382635,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1702291382635,
+      "end": 1702291382635,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1702291382635,
+      "end": 1702291382635,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1702291382635,
+      "end": 1702291382635,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1702291382635,
+      "end": 1702291382635,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1702291382635,
+      "end": 1702291382635,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "result": "\r\n  const _sfc_main = {\r\n    data() {\r\n      return {\r\n        products: [\r\n          { id: 1, name: \"Web3Cart Malta\", amount: 6000, img: \"malt.jpg\" },\r\n          {\r\n            id: 1,\r\n            name: \"Web3Cart Power Bank\",\r\n            amount: 6000,\r\n            img: \"power-bank.jpg\",\r\n          },\r\n          { id: 1, name: \"Web3Cart Miliki\", amount: 6000, img: \"milk.jpg\" },\r\n          { id: 1, name: \"Web3Cart PS5\", amount: 6000, img: \"PS5.jpg\" },\r\n          { id: 1, name: \"Web3Cart Fridge\", amount: 6000, img: \"fRIDGE.jpg\" },\r\n          { id: 1, name: \"Web3Cart Whisky\", amount: 6000, img: \"WINE.jpg\" },\r\n          {\r\n            id: 1,\r\n            name: \"Web3Cart Sneakers\",\r\n            amount: 6000,\r\n            img: \"Sneakers.jpg\",\r\n          },\r\n          {\r\n            id: 1,\r\n            name: \"Web3Cart Washing Machine\",\r\n            amount: 6000,\r\n            img: \"washing-machine.jpg\",\r\n          },\r\n          { id: 1, name: \"Web3Cart Phone\", amount: 6000, img: \"phone.jpg\" },\r\n          {\r\n            id: 1,\r\n            name: \"Web3Cart Solar Generator\",\r\n            amount: 6000,\r\n            img: \"solar-generator.jpg\",\r\n          },\r\n        ],\r\n        cart: [],\r\n      };\r\n    },\r\n    methods: {\r\n      addToCart(product) {\r\n        const existingItem = this.cart.find(\r\n          (item) => item.product.id === product.id\r\n        );\r\n\r\n        if (existingItem) {\r\n          existingItem.quantity += 1;\r\n        } else {\r\n          this.cart.push({ product, quantity: 1 });\r\n        }\r\n\r\n        this.saveCart();\r\n      },\r\n      increaseQuantity(item) {\r\n        item.quantity += 1;\r\n        this.saveCart();\r\n      },\r\n      decreaseQuantity(item) {\r\n        if (item.quantity > 1) {\r\n          item.quantity -= 1;\r\n        } else {\r\n          this.cart = this.cart.filter((i) => i !== item);\r\n        }\r\n\r\n        this.saveCart();\r\n      },\r\n      removeFromCart(item) {\r\n        this.cart = this.cart.filter((i) => i !== item);\r\n        this.saveCart();\r\n      },\r\n      getTotalAmount() {\r\n        return this.cart.reduce(\r\n          (total, item) => total + item.product.amount * item.quantity,\r\n          0\r\n        );\r\n      },\r\n      saveCart() {\r\n        // Persist cart data (e.g., using localStorage)\r\n        localStorage.setItem(\"cart\", JSON.stringify(this.cart));\r\n      },\r\n    },\r\n    mounted() {\r\n      // Load cart data from storage on page load\r\n      const storedCart = localStorage.getItem(\"cart\");\r\n      this.cart = storedCart ? JSON.parse(storedCart) : [];\r\n    },\r\n  };\r\n\nimport { renderList as _renderList, Fragment as _Fragment, openBlock as _openBlock, createElementBlock as _createElementBlock, createElementVNode as _createElementVNode, toDisplayString as _toDisplayString } from \"vue\"\n\nconst _hoisted_1 = [\"src\"]\nconst _hoisted_2 = [\"onClick\"]\nconst _hoisted_3 = /*#__PURE__*/_createElementVNode(\"h2\", null, \"Shopping Cart\", -1)\nconst _hoisted_4 = [\"onClick\"]\nconst _hoisted_5 = [\"onClick\"]\nconst _hoisted_6 = [\"onClick\"]\n\nfunction _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {\n  return (_openBlock(), _createElementBlock(\"div\", null, [\n    (_openBlock(true), _createElementBlock(_Fragment, null, _renderList($data.products, (product) => {\n      return (_openBlock(), _createElementBlock(\"div\", {\n        key: product.id\n      }, [\n        _createElementVNode(\"img\", {\n          src: `@/assets/images/${product.img}`\n        }, null, 8, _hoisted_1),\n        _createElementVNode(\"span\", null, _toDisplayString(product.name), 1),\n        _createElementVNode(\"span\", null, _toDisplayString(product.amount), 1),\n        _createElementVNode(\"button\", {\n          onClick: $event => ($options.addToCart(product))\n        }, \"Add to Cart\", 8, _hoisted_2)\n      ]))\n    }), 128)),\n    _createElementVNode(\"div\", null, [\n      _hoisted_3,\n      (_openBlock(true), _createElementBlock(_Fragment, null, _renderList($data.cart, (item) => {\n        return (_openBlock(), _createElementBlock(\"div\", {\n          key: item.product.id\n        }, [\n          _createElementVNode(\"span\", null, _toDisplayString(item.product.name), 1),\n          _createElementVNode(\"span\", null, _toDisplayString(item.quantity), 1),\n          _createElementVNode(\"button\", {\n            onClick: $event => ($options.increaseQuantity(item))\n          }, \"+\", 8, _hoisted_4),\n          _createElementVNode(\"button\", {\n            onClick: $event => ($options.decreaseQuantity(item))\n          }, \"-\", 8, _hoisted_5),\n          _createElementVNode(\"button\", {\n            onClick: $event => ($options.removeFromCart(item))\n          }, \"Remove\", 8, _hoisted_6)\n        ]))\n      }), 128)),\n      _createElementVNode(\"p\", null, \"Total Amount: \" + _toDisplayString($options.getTotalAmount()), 1)\n    ])\n  ]))\n}\n\n\nimport _export_sfc from '\u0000plugin-vue:export-helper'\nexport default /*#__PURE__*/_export_sfc(_sfc_main, [['render',_sfc_render]])",
+      "start": 1702291382635,
+      "end": 1702291382656,
+      "order": "normal",
+      "sourcemaps": {
+        "mappings": ""
+      }
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1702291382657,
+      "end": 1702291382657,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1702291382657,
+      "end": 1702291382657,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1702291382657,
+      "end": 1702291382657,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1702291382657,
+      "end": 1702291382657,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1702291382657,
+      "end": 1702291382657,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1702291382657,
+      "end": 1702291382657,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1702291382657,
+      "end": 1702291382657,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1702291382657,
+      "end": 1702291382657,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1702291382657,
+      "end": 1702291382657,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1702291382657,
+      "end": 1702291382657,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1702291382657,
+      "end": 1702291382657,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1702291382657,
+      "end": 1702291382657,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1702291382657,
+      "end": 1702291382657,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1702291382657,
+      "end": 1702291382657,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1702291382657,
+      "end": 1702291382657,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1702291382657,
+      "end": 1702291382657,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1702291382657,
+      "end": 1702291382663,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1702291382663,
+      "end": 1702291382663,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "result": "\nconst __nuxt_page_meta = null\nexport default __nuxt_page_meta\n",
+      "start": 1702291382663,
+      "end": 1702291382667,
+      "order": "post",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          ""
+        ],
+        "names": [],
+        "mappings": "AAAA;AAAA;AAAA;AAAA"
+      }
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1702291382667,
+      "end": 1702291382668,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1702291382668,
+      "end": 1702291382668,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1702291382668,
+      "end": 1702291382668,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1702291382668,
+      "end": 1702291382668,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1702291382668,
+      "end": 1702291382670,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1702291382670,
+      "end": 1702291382670,
+      "order": "normal"
+    }
+  ]
+}
