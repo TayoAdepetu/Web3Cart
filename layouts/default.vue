@@ -1,6 +1,6 @@
 <template>
   <v-app dark>
-    <div style="margin-right: auto; margin-left: auto">Web3Cart</div>
+    <div style="margin-right: auto; margin-left: auto;color: blue;font-weight: 700;">Web3Cart</div>
     <v-main>
       <v-container>
         <Nuxt />
