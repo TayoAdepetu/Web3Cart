@@ -214,9 +214,11 @@ export default {
         this.cart.forEach((item) => {
           item.product.amount *= 0.9; // 10% discount
         });
+        this.saveCart();
+        this.$toast.success("Congrats. Coupon Code Applied.");
+      } else {
+        this.$toast.error("Coupon Code Doesn't Exist.");
       }
-
-      this.saveCart();
     },
   },
   mounted() {
